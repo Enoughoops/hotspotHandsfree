@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.enoughoops.hotspothandsfree</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>7FBE7155-DD88-4C89-852B-F6DBCE8B4B06</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>24E2372E-830A-4661-9DE8-C6B5F3100868</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Enough</string>
+	<key>description</key>
+	<string>An alfred workflow helping U opening Internet Sharing on macOS automatically</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>hotspotHandfree</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>on run argv	tell application "System Preferences"		activate		reveal (pane id "com.apple.preferences.sharing")	end tell		tell application "System Events" to tell process "System Preferences"		delay 2		repeat with r in rows of table 1 of scroll area 1 of group 1 of window "共享"			if (value of static text of r as text) starts with "互联网" then				set sharingBool to value of checkbox of r as boolean				select r				if sharingBool is false then click checkbox of r				if sharingBool is true then click checkbox of r			end if		end repeat		delay 2				if (exists sheet 1 of window "共享") then			click button "启动" of sheet 1 of window "共享"		end if			end tellend run</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>24E2372E-830A-4661-9DE8-C6B5F3100868</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>4</integer>
+				<key>hotmod</key>
+				<integer>393216</integer>
+				<key>hotstring</key>
+				<string>H</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>7FBE7155-DD88-4C89-852B-F6DBCE8B4B06</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>24E2372E-830A-4661-9DE8-C6B5F3100868</key>
+		<dict>
+			<key>xpos</key>
+			<integer>610</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+		<key>7FBE7155-DD88-4C89-852B-F6DBCE8B4B06</key>
+		<dict>
+			<key>xpos</key>
+			<integer>120</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/Enoughoops/hotspotHandsfree</string>
+</dict>
+</plist>
